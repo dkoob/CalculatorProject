@@ -12,6 +12,11 @@ target/
 *.iws
 *.iml
 *.ipr
+.idea/codeStyles/
+.idea/inspectionProfiles/
+.idea/discord.xml
+.idea/encodings.xml
+.idea/misc.xml
 
 ### Eclipse ###
 .apt_generated
@@ -37,3 +42,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### Java ###
+*.class

@@ -1,4 +1,4 @@
-package com.dylan.calculator.core;
+package com.dylan.calculator.util;
 
 public class ExpressionEvaluator {
 }
