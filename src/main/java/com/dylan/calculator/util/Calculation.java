@@ -1,20 +1,22 @@
 package com.dylan.calculator.util;
 
+import com.dylan.calculator.util.enums.CalculationType;
+
 public class Calculation {
 
     private final String expression;
-    private final String calculationType;
+    private final CalculationType calculationType;
 
-    public Calculation(String expression, String calculationType) {
+    public Calculation(String expression, CalculationType type) {
         this.expression = expression;
-        this.calculationType = calculationType;
+        this.calculationType = type;
     }
 
     public String getExpression() {
         return this.expression;
     }
 
-    public String getCalculationType() {
+    public CalculationType getCalculationType() {
         return this.calculationType;
     }
 }
