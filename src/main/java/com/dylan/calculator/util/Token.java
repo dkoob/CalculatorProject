@@ -28,5 +28,10 @@ public class Token {
     public double getValue() {
         return this.value;
     }
+
+    @Override
+    public String toString() {
+        return "TokenType: " + getType() + " String " + getText() + " Value: " + getValue();
+    }
 }
 
