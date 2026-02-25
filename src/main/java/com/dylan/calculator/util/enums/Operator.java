@@ -16,4 +16,9 @@ public enum Operator {
         this.precedence = precedence;
         this.associativity = associativity;
     }
+
+    @Override
+    public String toString() {
+        return "Operator: {Symbol: " + this.symbol + " Precedence: " + this.precedence + " Associativity: " + this.associativity + "}";
+    }
 }

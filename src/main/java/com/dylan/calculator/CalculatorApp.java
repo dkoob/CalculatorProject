@@ -20,7 +20,7 @@ public class CalculatorApp extends Application {
         //primaryStage.setTitle("Calculator");
         //primaryStage.show();
 
-        String input = "34 + 5 - 17";
+        String input = "6+87^2";
         Lexer newLexer = new Lexer(input);
         List<Token> tokenList = newLexer.tokenize();
         for (Token token : tokenList) {

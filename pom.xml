@@ -35,8 +35,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.13.0</version>
                 <configuration>
-                    <source>21</source>
-                    <target>21</target>
+                    <release>21</release>
                 </configuration>
             </plugin>
             <plugin>
@@ -53,6 +52,12 @@
                 <version>0.0.8</version>
                 <configuration>
                     <mainClass>com.dylan.calculator.CalculatorApp</mainClass>
+                    <options>
+                        <option>--enable-native-access=javafx.graphics</option>
+                        <option>--enable-native-access=ALL-UNNAMED</option>
+                        <option>-Djavafx.verbose=false</option>
+                        <option>-Dprism.verbose=false</option>
+                    </options>
                 </configuration>
             </plugin>
         </plugins>
