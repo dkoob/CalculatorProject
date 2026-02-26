@@ -1,35 +1,33 @@
 package com.dylan.calculator.util.calculations;
 
 import com.dylan.calculator.util.Lexer;
+import com.dylan.calculator.util.ShuntingYardParser;
 import com.dylan.calculator.util.Token;
-import com.dylan.calculator.util.enums.CalculationType;
+import com.dylan.calculator.util.results.Result;
 import java.util.List;
 
-public class BasicCalculation {
+public class BasicCalculation extends Calculation {
+    private List<Token> infixTokens;
 
-    private final String expression;
-    private final CalculationType calculationType;
-    private List<Token> tokenList;
+    public BasicCalculation(String expression) {
+        super(expression);
+    }
 
-    public BasicCalculation(String expression, CalculationType type) {
-        this.expression = expression;
-        this.calculationType = type;
+    public void lex() {
+        Lexer lexer = new Lexer(expression);
+        this.infixTokens = lexer.tokenize();
     }
 
     public String getExpression() {
         return this.expression;
     }
-
-    public CalculationType getCalculationType() {
-        return this.calculationType;
+    public List<Token> getInfixTokens() {
+        return this.infixTokens;
     }
 
-    public void lex() {
-        Lexer lexer = new Lexer(expression);
-        this.tokenList = lexer.tokenize();
-    }
-
-    public List<Token> getTokenList() {
-        return this.tokenList;
+    @Override
+    public Result evaluate() {
+        ShuntingYardParser parser = new ShuntingYardParser(infixTokens);
+        List<Token> postfixTokens = parser.parseInfixExpression(infixTokens);
     }
 }

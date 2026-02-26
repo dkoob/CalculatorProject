@@ -3,7 +3,6 @@ package com.dylan.calculator;
 import com.dylan.calculator.util.calculations.BasicCalculation;
 import com.dylan.calculator.util.Token;
 
-import com.dylan.calculator.util.enums.CalculationType;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -19,7 +18,7 @@ public class CalculatorApp extends Application {
         //primaryStage.show();
 
         String input = "6+87^2";
-        BasicCalculation newCalc = new BasicCalculation(input, CalculationType.BASIC);
+        BasicCalculation newCalc = new BasicCalculation(input);
         newCalc.lex();
         for (Token token : newCalc.getTokenList()) {
             System.out.println(token);
