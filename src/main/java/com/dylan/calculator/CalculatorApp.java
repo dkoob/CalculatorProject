@@ -8,8 +8,6 @@ import java.util.Scanner;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-
-
 public class CalculatorApp extends Application {
 
     @Override
@@ -27,6 +25,7 @@ public class CalculatorApp extends Application {
             newCalc.lex();
             List<Token> postFixList = newCalc.evaluate();
             for (Token token : postFixList) {
+                System.out.println(token.toString());
                 System.out.print(token.getText() + " ");
             }
             System.out.println();
