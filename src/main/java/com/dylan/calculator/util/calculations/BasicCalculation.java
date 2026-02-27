@@ -26,8 +26,8 @@ public class BasicCalculation extends Calculation {
     }
 
     @Override
-    public Result evaluate() {
+    public List<Token> evaluate() {
         ShuntingYardParser parser = new ShuntingYardParser(infixTokens);
-        List<Token> postfixTokens = parser.parseInfixExpression(infixTokens);
+        return parser.parseInfixExpression(infixTokens);
     }
 }

@@ -42,6 +42,34 @@ public class Lexer {
                 continue;
             }
 
+            if (ch == '-' && (Character.isDigit(input.charAt(i + 1)) || input.charAt(i + 1) == '.')) {
+                buffer.append(ch);
+                while (i + 1 < input.length() && (Character.isDigit(input.charAt(i + 1)) || input.charAt(i + 1) == '.')) {
+                    buffer.append(input.charAt(++i));
+                }
+                int peekIndex = i + 1;
+                while (peekIndex < input.length() && Character.isWhitespace(input.charAt(peekIndex))) {
+                    peekIndex++;
+                }
+                if (i + 2 < input.length() && input.charAt(peekIndex) == '^') {
+                    String digit = buffer.toString().replace("-", "");
+                    buffer.setLength(0);
+                    untokenizedList.add("NEG");
+                    buffer.append(digit);
+                    untokenizedList.add(buffer.toString());
+                    buffer.setLength(0);
+                    continue;
+                }
+                untokenizedList.add(buffer.toString());
+                buffer.setLength(0);
+                continue;
+            }
+
+            if (ch == '-' && (i == 0 || input.charAt(i + 2) == '(' || !Character.isLetterOrDigit(input.charAt (i - 2)))) {
+                untokenizedList.add("NEG");
+                continue;
+            }
+
             untokenizedList.add(String.valueOf(ch));
         }
     }
@@ -65,6 +93,11 @@ public class Lexer {
         }
 
         String lexeme = untokenizedList.get(currentPosition);
+
+        if (lexeme.equals("NEG")) {
+            currentPosition++;
+            return new Token(TokenType.NEGATIVE_OPERATOR, lexeme, Operator.NEG);
+        }
 
         for (TokenType type : TokenType.values()) {
             Matcher matcher = type.getPattern().matcher(lexeme);

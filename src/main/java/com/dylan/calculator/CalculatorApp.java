@@ -1,7 +1,9 @@
 package com.dylan.calculator;
 
+import java.util.List;
 import com.dylan.calculator.util.calculations.BasicCalculation;
 import com.dylan.calculator.util.Token;
+import java.util.Scanner;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -17,11 +19,17 @@ public class CalculatorApp extends Application {
         //primaryStage.setTitle("Calculator");
         //primaryStage.show();
 
-        String input = "6+87^2";
-        BasicCalculation newCalc = new BasicCalculation(input);
-        newCalc.lex();
-        for (Token token : newCalc.getTokenList()) {
-            System.out.println(token);
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            System.out.println("Enter expression");
+            String input = sc.nextLine();
+            BasicCalculation newCalc = new BasicCalculation(input);
+            newCalc.lex();
+            List<Token> postFixList = newCalc.evaluate();
+            for (Token token : postFixList) {
+                System.out.print(token.getText() + " ");
+            }
+            System.out.println();
         }
     }
 

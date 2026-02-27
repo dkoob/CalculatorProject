@@ -1,6 +1,8 @@
 package com.dylan.calculator.util.calculations;
 
+import com.dylan.calculator.util.Token;
 import com.dylan.calculator.util.results.Result;
+import java.util.List;
 
 abstract class Calculation {
     protected String expression;
@@ -9,5 +11,5 @@ abstract class Calculation {
         this.expression = expression;
     }
 
-    public abstract Result evaluate();
+    public abstract List<Token> evaluate();
 }

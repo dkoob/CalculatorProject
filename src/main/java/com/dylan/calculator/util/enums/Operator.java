@@ -5,7 +5,8 @@ public enum Operator {
     SUBTRACT("-", 1, Associativity.LEFT),
     MULTIPLY("*", 2, Associativity.LEFT),
     DIVIDE("/", 2, Associativity.LEFT),
-    POWER("^", 3, Associativity.RIGHT);
+    NEG("NEG", 3, Associativity.RIGHT),
+    POWER("^", 4, Associativity.RIGHT);
 
     public final String symbol;
     public final int precedence;

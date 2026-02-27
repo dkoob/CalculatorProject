@@ -3,7 +3,9 @@ package com.dylan.calculator.util.enums;
 import java.util.regex.Pattern;
 
 public enum TokenType {
+    NEGATIVE_NUMBER("^-\\d+(\\.\\d+)?$"),
     NUMBER("\\d+(\\.\\d+)?"),
+    NEGATIVE_OPERATOR("-"),
     OPERATOR("[+\\-*/^]"),
     FUNCTION("[a-zA-Z_][a-zA-Z0-9_]*"),
     LEFT_PAREN("\\("),
