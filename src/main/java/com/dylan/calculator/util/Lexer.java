@@ -65,7 +65,7 @@ public class Lexer {
                 continue;
             }
 
-            if (ch == '-' && (i == 0 || input.charAt(i + 2) == '(' || !Character.isLetterOrDigit(input.charAt (i - 2)))) {
+            if (ch == '-' && (i == 0 || input.charAt(i - 2) == '(' || !Character.isLetterOrDigit(input.charAt (i - 2)))) {
                 untokenizedList.add("NEG");
                 continue;
             }
@@ -104,7 +104,7 @@ public class Lexer {
             if (matcher.matches()) {
                 currentPosition++;
 
-                if (type == TokenType.OPERATOR) {
+                if (type == TokenType.OPERATOR || type == TokenType.FUNCTION) {
                     Operator op = Operators.BY_SYMBOL.get(lexeme);
                     if (op == null) {
                         throw new RuntimeException("Unknown operator: " + lexeme);
@@ -113,7 +113,7 @@ public class Lexer {
                 }
 
                 if (type == TokenType.NUMBER) {
-                    return new Token(type, lexeme, Double.parseDouble(lexeme));
+                    return new Token(type, Double.parseDouble(lexeme));
                 }
                 return new Token(type, lexeme);
             }

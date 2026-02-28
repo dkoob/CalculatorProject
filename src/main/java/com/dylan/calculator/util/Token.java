@@ -13,8 +13,8 @@ public class Token {
         this(type, text, Double.NaN, null);
     }
 
-    public Token(TokenType type, String text, double value) {
-        this(type, text, value, null);
+    public Token(TokenType type, double value) {
+        this(type, null, value, null);
     }
 
     public Token(TokenType type, String text, Operator operator) {

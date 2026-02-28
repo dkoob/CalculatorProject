@@ -5,6 +5,7 @@ import com.dylan.calculator.util.calculations.BasicCalculation;
 import com.dylan.calculator.util.Token;
 import java.util.Scanner;
 
+import com.dylan.calculator.util.results.Result;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -23,12 +24,8 @@ public class CalculatorApp extends Application {
             String input = sc.nextLine();
             BasicCalculation newCalc = new BasicCalculation(input);
             newCalc.lex();
-            List<Token> postFixList = newCalc.evaluate();
-            for (Token token : postFixList) {
-                System.out.println(token.toString());
-                System.out.print(token.getText() + " ");
-            }
-            System.out.println();
+            Result result = newCalc.evaluate();
+            System.out.println("Result: " + result.toString());
         }
     }
 

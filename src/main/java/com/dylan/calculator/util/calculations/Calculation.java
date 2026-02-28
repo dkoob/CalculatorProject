@@ -13,5 +13,5 @@ abstract class Calculation {
         this.expression = expression;
     }
 
-    public abstract List<Token> evaluate();
+    public abstract Result evaluate();
 }

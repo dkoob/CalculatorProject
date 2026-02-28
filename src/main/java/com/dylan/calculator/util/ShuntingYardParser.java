@@ -6,11 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShuntingYardParser {
-    List<Token> infixTokens;
     List<Token> postfixTokens;
 
-    public ShuntingYardParser(List<Token> infixTokens) {
-        this.infixTokens = infixTokens;
+    public ShuntingYardParser() {
     }
 
     public List<Token> parseInfixExpression(List<Token> infixTokens) {
