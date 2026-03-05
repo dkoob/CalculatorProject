@@ -32,7 +32,6 @@ public class BasicCalculation extends Calculation {
     public Result evaluate() {
         ShuntingYardParser parser = new ShuntingYardParser();
         Evaluator eval = new ExpressionEvaluator();
-        System.out.println();
         return this.result = eval.evaluate(parser.parseInfixExpression(infixTokens));
     }
 }

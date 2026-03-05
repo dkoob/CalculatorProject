@@ -20,7 +20,6 @@ public class ExpressionEvaluator extends Evaluator {
                 }
 
                 case OPERATOR, FUNCTION, NEGATIVE_OPERATOR -> {
-                    System.out.println(token.toString());
                     int arity = token.getOperator().arity;
                     switch (arity) {
 
