@@ -41,7 +41,8 @@ public class ShuntingYardParser {
                         stack.add(token);
                     } else {
                         while (!stack.isEmpty()
-                                && stack.getLast().getType() == TokenType.OPERATOR
+                                && (stack.getLast().getType() == TokenType.OPERATOR
+                                || stack.getLast().getType() == TokenType.NEGATIVE_OPERATOR)
                                 && stack.getLast().getType() != TokenType.LEFT_PAREN
                                 && (stack.getLast().getOperator().precedence > token.getOperator().precedence
                                 || (stack.getLast().getOperator().precedence == token.getOperator().precedence

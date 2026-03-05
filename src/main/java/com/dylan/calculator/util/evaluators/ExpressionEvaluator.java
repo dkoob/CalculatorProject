@@ -75,7 +75,9 @@ public class ExpressionEvaluator extends Evaluator {
             case "^" -> result = Math.pow(aValue, bValue);
             default -> throw new IllegalArgumentException("Unknown operator: " + symbol);
         }
-
+        if (Math.abs(result) < 1e-12) {
+            result = 0.0;
+        }
         return new Token(TokenType.NUMBER, result);
     }
 }
